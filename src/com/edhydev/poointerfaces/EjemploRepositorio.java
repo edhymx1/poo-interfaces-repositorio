@@ -2,12 +2,13 @@ package com.edhydev.poointerfaces;
 
 import com.edhydev.poointerfaces.modelo.Cliente;
 import com.edhydev.poointerfaces.repositorio.*;
+import com.edhydev.poointerfaces.repositorio.lista.ClienteListRepositorio;
 
 import java.util.List;
 
 public class EjemploRepositorio {
     public static void main(String[] args) {
-        OrdPagCrudRepositorio repo = new ClienteListRepositorio();
+        OrdPagCrudRepositorio<Cliente> repo = new ClienteListRepositorio();
         repo.crear(new Cliente("Edgar", "Jiménez"));
         repo.crear(new Cliente("Daira", "Fornais"));
         repo.crear(new Cliente("Xavi", "Metallica"));

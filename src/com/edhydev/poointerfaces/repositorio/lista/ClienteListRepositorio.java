@@ -1,51 +1,19 @@
-package com.edhydev.poointerfaces.repositorio;
+package com.edhydev.poointerfaces.repositorio.lista;
 
 import com.edhydev.poointerfaces.modelo.Cliente;
+import com.edhydev.poointerfaces.repositorio.AbstractaListRepositorio;
+import com.edhydev.poointerfaces.repositorio.Direccion;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
-public class ClienteListRepositorio implements OrdPagCrudRepositorio {
-
-    private List<Cliente> dataSource;
-
-    public ClienteListRepositorio() {
-        dataSource = new ArrayList<>();
-    }
-
-    @Override
-    public List<Cliente> listar() {
-        return dataSource;
-    }
-
-    @Override
-    public Cliente porId(Integer id) {
-        Cliente resultado =  null;
-        for(Cliente cli : dataSource) {
-            if (cli.getId() != null && cli.getId().equals(id)) {
-                resultado = cli;
-                break;
-            }
-        }
-        return resultado;
-    }
-
-    @Override
-    public void crear(Cliente cliente) {
-        this.dataSource.add(cliente);
-    }
+public class ClienteListRepositorio extends AbstractaListRepositorio<Cliente> {
 
     @Override
     public void editar(Cliente cliente) {
         Cliente c = this.porId(cliente.getId());
         c.setNombre(cliente.getNombre());
         c.setApellido(cliente.getApellido());
-    }
-
-    @Override
-    public void eliminar(Integer id) {
-        this.dataSource.remove(this.porId(id));
     }
 
     @Override
@@ -63,16 +31,6 @@ public class ClienteListRepositorio implements OrdPagCrudRepositorio {
             return resultado;
         });
         return listaOrdenada;
-    }
-
-    @Override
-    public List<Cliente> listar(int desde, int hasta) {
-        return dataSource.subList(desde, hasta);
-    }
-
-    @Override
-    public int total() {
-        return this.dataSource.size();
     }
 
     public static int ordenar(String campo, Cliente a, Cliente b) {
