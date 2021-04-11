@@ -1,3 +1,7 @@
 out/
 .idea/
 *.iml
+/nbproject/
+/build/
+build.xml
+manifest.mf

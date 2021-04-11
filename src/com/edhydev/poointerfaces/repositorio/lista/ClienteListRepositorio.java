@@ -3,6 +3,7 @@ package com.edhydev.poointerfaces.repositorio.lista;
 import com.edhydev.poointerfaces.modelo.Cliente;
 import com.edhydev.poointerfaces.repositorio.AbstractaListRepositorio;
 import com.edhydev.poointerfaces.repositorio.Direccion;
+import com.edhydev.poointerfaces.repositorio.excepciones.LecturaAccesoDatoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class ClienteListRepositorio extends AbstractaListRepositorio<Cliente> {
 
     @Override
-    public void editar(Cliente cliente) {
+    public void editar(Cliente cliente) throws LecturaAccesoDatoException {
         Cliente c = this.porId(cliente.getId());
         c.setNombre(cliente.getNombre());
         c.setApellido(cliente.getApellido());
